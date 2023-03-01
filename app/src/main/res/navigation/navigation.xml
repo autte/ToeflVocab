@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/galleryFragment">
+
+    <fragment
+        android:id="@+id/galleryFragment"
+        android:name="com.example.pagergalleryloadmorepart2.GalleryFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_gallery">
+        <action
+            android:id="@+id/action_galleryFragment_to_pagerPhotoFragment"
+            android:tag="GALLERY_TO_PAGER_FRAGMENT"
+            android:label="fragmentLabel"
+            app:destination="@id/pagerPhotoFragment"/>
+        <action
+            android:id="@+id/action_galleryFragment_to_IndexFragment"
+            android:tag="GALLERY_TO_INDEX_FRAGMENT"
+            android:label="GalleryToIndexLabel"
+            app:destination="@id/IndexFragment"/>
+    </fragment>
+    <fragment
+        android:id="@+id/pagerPhotoFragment"
+        android:name="com.example.pagergalleryloadmorepart2.PagerPhotoFragment"
+        android:label="   "
+        tools:layout="@layout/fragment_pager_photo" >
+        <action
+            android:id="@+id/action_pagerPhotoFragment_to_IndexFragment"
+            app:destination="@id/IndexFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/IndexFragment"
+        android:name="com.example.pagergalleryloadmorepart2.ExploreFragment"
+        android:label="@string/Index"
+        tools:layout="@layout/fragment_explore">
+        <action
+            android:id="@+id/action_indexFragment_to_GalleryFragment"
+            android:tag="EXPLORE_FRAGMENT"
+            android:label="ExploreLabel"
+            app:destination="@id/galleryFragment" />
+    </fragment>
+</navigation>

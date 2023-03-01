@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#BDD4E2</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorBlack">#01054c</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="Blue">#01054c</color>
+    <color name="myBarColor">#01054c</color>
+    <color name="titleColor">#BDD4E2</color>
+    <color name="text_color_3">#000000</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="MintGray">#EAEB6R</color>
+    <color name="colorGray">#EFD7A3</color>
+    <color name="coloredit">#efefef</color>
+    <color name="green">#64BC8B</color>
+    <color name="darkGreen">#009D59</color>
+    <color name="shadegreen">#E8F5E9</color>
+    <color name="shadeyellow">#EDE6D6</color>
+   <!-- <color name="lightgreen">#D3E8D5</color>-->
+    <color name="lightgreen">#CBE9CD</color>
+    <color name="darkgreen">#05260E</color>
+    <color name="colorEditHintText">#808080</color>
+    <color name="colortrendingLine">#d4c2bcbc</color>
+</resources>

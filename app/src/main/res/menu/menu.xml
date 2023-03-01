@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/swipeIndicator"
+        android:icon="@drawable/ic_baseline_refresh_24"
+        android:title="@string/swiptorefresh"/>
+
+    <item
+        android:id="@+id/navigation_explore"
+        android:icon="@drawable/ic_explore_active_icon"
+        android:title="@string/explore"/>
+    <item
+        android:id="@+id/rate_this_app"
+        android:icon="@drawable/ic_explore_active_icon"
+        android:title="@string/rate_app_title"/>
+</menu>

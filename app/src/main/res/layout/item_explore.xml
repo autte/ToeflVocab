@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/linlayout"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <!--app:cardBackgroundColor="@color/shadegreen"-->
+ <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+
+        android:foreground="?selectableItemBackground"
+        app:cardCornerRadius="4dp">
+<!--     android:background="@color/shadegreen"-->
+     <androidx.constraintlayout.widget.ConstraintLayout
+         android:layout_width="match_parent"
+         android:layout_height="match_parent">
+
+         <androidx.constraintlayout.widget.Guideline
+             android:id="@+id/guideline4"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:orientation="vertical"
+             app:layout_constraintGuide_percent="0.1" />
+
+         <androidx.constraintlayout.widget.Guideline
+             android:id="@+id/guideline5"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:orientation="vertical"
+             app:layout_constraintGuide_percent="0.85" />
+
+         <androidx.constraintlayout.widget.Guideline
+             android:id="@+id/guideline2"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:orientation="vertical"
+             app:layout_constraintGuide_percent="0.68" />
+
+         <TextView
+             android:id="@+id/textViewNumber"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="8dp"
+             android:layout_marginEnd="8dp"
+             android:layout_marginBottom="8dp"
+             android:text="1"
+             app:layout_constraintBottom_toBottomOf="parent"
+             app:layout_constraintEnd_toStartOf="@+id/guideline4"
+             app:layout_constraintStart_toStartOf="parent"
+             app:layout_constraintTop_toTopOf="parent"
+             tools:text="1" />
+
+         <TextView
+             android:id="@+id/tvExploreName"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_margin="@dimen/m20dp"
+             android:layout_marginStart="8dp"
+             android:layout_marginEnd="8dp"
+             android:text="     "
+             android:textColor="@color/cardview_dark_background"
+             android:textSize="16sp"
+             android:textStyle="bold"
+             android:typeface="monospace"
+             app:layout_constraintBottom_toBottomOf="parent"
+             app:layout_constraintEnd_toStartOf="@+id/guideline5"
+             app:layout_constraintHorizontal_bias="0.125"
+             app:layout_constraintStart_toStartOf="@+id/guideline4"
+             app:layout_constraintTop_toTopOf="parent" />
+
+         <ImageView
+             android:id="@+id/wordMeaning"
+             android:layout_width="wrap_content"
+             android:layout_height="0dp"
+             android:paddingStart="30dp"
+             android:paddingEnd="15dp"
+             app:layout_constraintBottom_toBottomOf="parent"
+             app:layout_constraintEnd_toEndOf="parent"
+             app:layout_constraintStart_toStartOf="@+id/guideline5"
+             app:layout_constraintTop_toTopOf="parent"
+             app:srcCompat="@drawable/ic_baseline_article_24" />
+
+         <ImageView
+             android:id="@+id/playWord"
+             android:layout_width="wrap_content"
+             android:layout_height="0dp"
+             android:paddingStart="30dp"
+             android:paddingEnd="15dp"
+             app:layout_constraintBottom_toBottomOf="parent"
+             app:layout_constraintEnd_toEndOf="@+id/guideline5"
+             app:layout_constraintStart_toStartOf="@+id/guideline2"
+             app:layout_constraintTop_toTopOf="parent"
+             app:srcCompat="@drawable/ic_baseline_play_circle_filled_24" />
+         <!--         <ImageView
+                android:id="@+id/playAllWord"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:paddingStart="30dp"
+                android:paddingEnd="15dp"
+                app:srcCompat="@drawable/ic_baseline_play_circle_outline_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toTopOf="parent" />-->
+     </androidx.constraintlayout.widget.ConstraintLayout>
+ </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
