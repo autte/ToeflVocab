@@ -34,6 +34,7 @@
         android:id="@+id/IndexFragment"
         android:name="com.example.pagergalleryloadmorepart2.ExploreFragment"
         android:label="@string/Index"
+        app:titleTextColor="@color/darkBrown"
         tools:layout="@layout/fragment_explore">
         <action
             android:id="@+id/action_indexFragment_to_GalleryFragment"

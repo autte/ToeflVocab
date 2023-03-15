@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/background_dark"
+    android:background="@color/colorGray"
     tools:context=".PagerPhotoFragment">
 
     <!-- TODO: Update blank fragment layout
@@ -16,6 +16,7 @@
         android:layout_marginBottom="60dp"
         android:background="@drawable/bg_btn_apply"
         android:clickable="true"
+        android:focusable="true"
         android:src="@drawable/save_button_image"
         android:text="@string/applyBtn"
         android:textColor="@color/colorWhite"
@@ -46,7 +47,7 @@
         android:layout_height="wrap_content"
         android:gravity="bottom|center_horizontal"
         android:text="@string/hello_blank_fragment"
-        android:textColor="@android:color/background_light"
+        android:textColor="@color/darkBrown"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.482"
@@ -58,9 +59,9 @@
         android:id="@+id/textView2"
         android:layout_width="306dp"
         android:layout_height="56dp"
-        android:text="TextView"
+        android:text="@string/applyBtn"
         android:textAlignment="center"
-        android:textColor="#F6F2F2"
+        android:textColor="@color/darkBrown"
         android:textSize="44sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"

@@ -8,14 +8,13 @@
     android:background="@color/titleColor"
     tools:context=".MainActivity"
     tools:visibility="visible">
-    <!--android:theme="@android:style/Theme.Light"-->
-    <!--android:theme="@style/Theme.Design.Light"-->
-    <!-- <include layout="@layout/toolbar_home"/>-->
+
     <RelativeLayout
         android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="?android:windowBackground">
+        android:background="@color/colorWhite"
+        android:src="@drawable/stamp">
         <!--<fragment-->
 
         <fragment
@@ -43,7 +42,7 @@
             android:layout_height="131dp"
             android:layout_alignBottom="@+id/fragment"
             android:layout_alignParentEnd="true"
-            android:layout_marginLeft="100dp"
+            android:layout_marginStart="100dp"
             android:layout_marginTop="70dp"
             android:layout_marginEnd="1dp"
             android:layout_marginBottom="218dp"
@@ -54,15 +53,13 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.663" />
-
-
         <ImageView
             android:id="@+id/watch_record_ImageView_group"
             android:layout_width="128dp"
             android:layout_height="184dp"
             android:layout_alignBottom="@+id/fragment"
             android:layout_alignParentEnd="true"
-            android:layout_marginLeft="100dp"
+            android:layout_marginStart="100dp"
             android:layout_marginTop="70dp"
             android:layout_marginEnd="98dp"
             android:layout_marginBottom="213dp"
@@ -78,17 +75,18 @@
         <com.google.android.gms.ads.admanager.AdManagerAdView
             android:id="@+id/adManagerAdView"
             android:layout_width="match_parent"
-            android:layout_height="49dp"
+            android:layout_height="38dp"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
+            android:layout_marginBottom="2dp"
+            android:background="@color/colorPink"
             app:adSize="BANNER"
-            app:adUnitId="@string/bannerUnitId"
+            app:adUnitId="@string/AD_BANNER_ID"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             tools:ignore="MissingConstraints"
             tools:layout_editor_absoluteY="684dp" />
-
         <TextView
             android:id="@+id/pulldownstr"
             android:layout_width="208dp"

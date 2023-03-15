@@ -10,6 +10,7 @@ import android.util.Log
 import android.view.*
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.viewModels
@@ -61,10 +62,12 @@ class GalleryFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
       //设置颜色
+        val colorResId = R.color.colorEditHintText // ID of the color resource in colors.xml
+        val colorPink = ContextCompat.getColor(getActivity() as AppCompatActivity, colorResId)
         var actionBar = (getActivity() as AppCompatActivity?)!!.supportActionBar
-        val colorDrawable = ColorDrawable(Color.parseColor("#009D59"))
+        val colorDrawable = ColorDrawable(colorPink)
         actionBar!!.setBackgroundDrawable(colorDrawable)
-        actionBar!!.setStackedBackgroundDrawable(colorDrawable)
+        ////actionBar!!.setStackedBackgroundDrawable(colorDrawable)
         // Inflate the layout for this fragment
         if(getArguments()!=null){
             //取出保存的值

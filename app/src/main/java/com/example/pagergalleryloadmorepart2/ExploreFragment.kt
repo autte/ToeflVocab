@@ -1,6 +1,7 @@
 package com.example.pagergalleryloadmorepart2
 
 import android.app.ProgressDialog
+import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -15,6 +16,7 @@ import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -61,10 +63,10 @@ class ExploreFragment : Fragment(), OnExploreSelectedListner, OnLoadMoreListener
         rvExplore!!.layoutManager = linearLayoutManager
         ProgressDialogSetup()
         //设置回退键
-        var actionBar = (getActivity() as AppCompatActivity?)!!.supportActionBar
-        val colorDrawable = ColorDrawable(Color.parseColor("#009D59"))
+        var actionBar = (activity as AppCompatActivity?)!!.supportActionBar
+        val colorDrawable = ColorDrawable(ContextCompat.getColor(requireContext(), R.color.colorEditHintText))
         actionBar!!.setBackgroundDrawable(colorDrawable)
-        actionBar!!.setStackedBackgroundDrawable(colorDrawable)
+        actionBar.setStackedBackgroundDrawable(colorDrawable)
 
         //实现SIDEBAR排序ABCDEFG
         val decoration = PinnedHeaderDecoration()

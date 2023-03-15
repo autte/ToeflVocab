@@ -20,24 +20,4 @@ class MyViewModelFactory(application: Application, param: String, accessTime: In
         this.accessTime = accessTime
     }
 
-    /**
-     * Creates a new instance of the given `Class`.
-     *
-     *
-     *
-     * @param modelClass a `Class` whose instance is requested
-     * @param <T>        The type parameter for the ViewModel.
-     * @return a newly created ViewModel
-    </T> */
-
-
-    /**
-     * Creates a new instance of the given `Class`.
-     *
-     *
-     *
-     * @param modelClass a `Class` whose instance is requested
-     * @param <T>        The type parameter for the ViewModel.
-     * @return a newly created ViewModel
-    </T> */
 }

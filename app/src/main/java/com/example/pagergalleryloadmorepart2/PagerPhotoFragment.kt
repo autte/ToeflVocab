@@ -62,7 +62,7 @@ class PagerPhotoFragment : Fragment(), TextToSpeech.OnInitListener {
 
     //private val AD_UNIT_ID =getArguments()?.getString("AD_UNIT_ID")
     //Auror本人
-    private val AD_UNIT_ID ="ca-app-pub-5268108478853992/6364323758"
+    private val AD_UNIT_ID ="ca-app-pub-7921041501220320/4477616654"
     //private val AD_UNIT_ID ="ca-app-pub-3940256099942544/5354046379"
     private var timeRemaining: Long = 0
     private var rewardedInterstitialAd: RewardedInterstitialAd? = null
@@ -89,9 +89,10 @@ class PagerPhotoFragment : Fragment(), TextToSpeech.OnInitListener {
         //context=this.context
         //设置背景为灰色
         var actionBar = (getActivity() as AppCompatActivity?)!!.supportActionBar
-        val colorDrawable = ColorDrawable(Color.parseColor("#0c0c0c"))
+        val colorDrawable = ColorDrawable(ContextCompat.getColor(requireContext(), R.color.colorPink))
         actionBar!!.setBackgroundDrawable(colorDrawable)
-        actionBar!!.setStackedBackgroundDrawable(colorDrawable)
+        actionBar.setStackedBackgroundDrawable(colorDrawable)
+
         //全屏
        //getActivity()?.getWindow()?.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         currentKey1= arguments?.getString("CURRENT_KEY").toString()
@@ -106,16 +107,16 @@ class PagerPhotoFragment : Fragment(), TextToSpeech.OnInitListener {
                 photoTag.text = getString(R.string.photo_tag, position + 1, photoList?.size)
                 textView2.text = currentKey1
                 val typeface = Typeface.createFromAsset(
-                    context?.getAssets(),
+                    context?.assets,
                     "fonts/AslinaBold-2.otf"
                 ) // create a typeface from the raw ttf
-                textView2.setTypeface(typeface) // apply the typeface to the textview
+                textView2.typeface = typeface // apply the typeface to the textview
 
             }
         })
         viewPager2.setCurrentItem(arguments?.getInt("PHOTO_POSITION") ?: 0, false)
         viewPager2.orientation = ViewPager2.ORIENTATION_VERTICAL
-        //loadInterAd()
+        loadRewardedInterstitialAd()
         saveButton.setOnClickListener {
             Handler().postDelayed(Runnable {
                 startGame()
@@ -132,6 +133,8 @@ class PagerPhotoFragment : Fragment(), TextToSpeech.OnInitListener {
                 )
             } else {
                 viewLifecycleOwner.lifecycleScope.launch {
+
+                    startGame()
                     savePhoto()
                 }
             }
@@ -140,20 +143,26 @@ class PagerPhotoFragment : Fragment(), TextToSpeech.OnInitListener {
             //Toast.makeText(getActivity(), "Now APPEAR!!", Toast.LENGTH_LONG).show()
             val allEnglishString = context?.resources?.getStringArray(R.array.itemAllEng)
             val engMeaningStr=context?.resources?.getStringArray(R.array.itemMeaningEng)
-            var posInt:Int=allEnglishString?.indexOf(currentKey1)?: 0
-            Log.d("posInt","posInt: "+ posInt)
-            var meaning:String= engMeaningStr?.get(posInt).toString()
+            var posInt:Int= 0
+            //Log.d("posInt","posInt: "+ posInt)
+            var meaning:String= "Sorry, nothing has been found"
+            var str111:String= "A0"
+            try{
+                 posInt=allEnglishString?.indexOf(currentKey1)?: 0
+                 meaning= engMeaningStr?.get(posInt).toString()
+                 str111= "A$posInt"
+                    //Log.d("str111","str: "+str111)
+            }
+            catch(exception: ArrayIndexOutOfBoundsException ) {
 
-            var str111:String= "A$posInt"
-            //Log.d("str111","str: "+str111)
+            }
             var strToastLocal:String=getStringResourceByName(str111)
-            //Log.d("str111",str111)
+
             if (engMeaningStr != null) {
                 if (allEnglishString != null) {
                     Log.d("currentKey1","posInt:"+posInt+" meaning: "+meaning+" meaningStrlen "+engMeaningStr.size+" all size: "+allEnglishString.size)
                     //Toast.makeText(getActivity(), "meaning len:"+engMeaningStr.size+" allStr.SIZE: "+allEnglishString.size+" "+str111+" "+strToastLocal+" meaning: "+meaning, Toast.LENGTH_LONG).show()
                     val builder = context?.let { it1 -> AlertDialog.Builder(it1) }
-
                     with(builder)
                     {
                         this?.setTitle(currentKey1)
@@ -260,7 +269,7 @@ class PagerPhotoFragment : Fragment(), TextToSpeech.OnInitListener {
         val canvas = Canvas(bmpTemp)
         val p = Paint()
         val typeface = Typeface.createFromAsset(
-            context?.getAssets(),
+            context?.assets,
             "fonts/AslinaBold-2.otf"
         ) // create a typeface from the raw ttf
         p.color = Color.WHITE
@@ -282,7 +291,7 @@ class PagerPhotoFragment : Fragment(), TextToSpeech.OnInitListener {
             override fun onTick(millisUnitFinished: Long) {
                 /*   timeRemaining = ((millisUnitFinished / 1000) + 1);
                         textView.setText("seconds remaining: " + timeRemaining);*/
-                timeRemaining = 1
+                timeRemaining = 3
             }
             override fun onFinish() {
                 if (rewardedInterstitialAd == null) {
@@ -343,36 +352,35 @@ class PagerPhotoFragment : Fragment(), TextToSpeech.OnInitListener {
             Log.d("Timer", "The rewarded interstitial ad wasn't ready yet.")
             return
         }
-        rewardedInterstitialAd!!.setFullScreenContentCallback(
-            object : FullScreenContentCallback() {
-                /** Called when ad showed the full screen content.  */
-                override fun onAdShowedFullScreenContent() {
-                    Log.d("Timer", "onAdShowedFullScreenContent")
+        rewardedInterstitialAd!!.fullScreenContentCallback = object : FullScreenContentCallback() {
+            /** Called when ad showed the full screen content.  */
+            override fun onAdShowedFullScreenContent() {
+                Log.d("Timer", "onAdShowedFullScreenContent")
 
-                    // Toast.makeText(MainActivity.this, "onAdShowedFullScreenContent", Toast.LENGTH_SHORT).show();
-                }
+                // Toast.makeText(MainActivity.this, "onAdShowedFullScreenContent", Toast.LENGTH_SHORT).show();
+            }
 
-                /** Called when the ad failed to show full screen content.  */
-                override fun onAdFailedToShowFullScreenContent(adError: AdError) {
-                    Log.d("Timer", "onAdFailedToShowFullScreenContent: " + adError.message)
-                    // Don't forget to set the ad reference to null so you
-                    // don't show the ad a second time.
-                    rewardedInterstitialAd = null
-                    loadRewardedInterstitialAd()
-                }
+            /** Called when the ad failed to show full screen content.  */
+            override fun onAdFailedToShowFullScreenContent(adError: AdError) {
+                Log.d("Timer", "onAdFailedToShowFullScreenContent: " + adError.message)
+                // Don't forget to set the ad reference to null so you
+                // don't show the ad a second time.
+                rewardedInterstitialAd = null
+                loadRewardedInterstitialAd()
+            }
 
-                /** Called when full screen content is dismissed.  */
-                override fun onAdDismissedFullScreenContent() {
-                    // Don't forget to set the ad reference to null so you
-                    // don't show the ad a second time.
-                    rewardedInterstitialAd = null
-                    Log.d("Timer", "onAdDismissedFullScreenContent")
-                    //                        Toast.makeText(MainActivity.this, "onAdDismissedFullScreenContent", Toast.LENGTH_SHORT)
-//                                .show();
-                    // Preload the next rewarded interstitial ad.
-                    // loadRewardedInterstitialAd();
-                }
-            })
+            /** Called when full screen content is dismissed.  */
+            override fun onAdDismissedFullScreenContent() {
+                // Don't forget to set the ad reference to null so you
+                // don't show the ad a second time.
+                rewardedInterstitialAd = null
+                Log.d("Timer", "onAdDismissedFullScreenContent")
+                //                        Toast.makeText(MainActivity.this, "onAdDismissedFullScreenContent", Toast.LENGTH_SHORT)
+    //                                .show();
+                // Preload the next rewarded interstitial ad.
+                // loadRewardedInterstitialAd();
+            }
+        }
         val activityContext: FragmentActivity? = this.activity
         rewardedInterstitialAd!!.show(
             activityContext

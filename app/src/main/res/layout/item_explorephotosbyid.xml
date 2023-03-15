@@ -1,24 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:card_view="http://schemas.android.com/tools"
     android:layout_margin="1dp"
     android:orientation="vertical"
+    android:padding="@dimen/m10dp"
     android:layout_width="wrap_content"
     android:layout_height="@dimen/_150sdp">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center">
 
             <ImageView
                 android:id="@+id/imgview"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
-                android:src="@drawable/ic_placeholder_photos" />
-
+                android:contentDescription="imageStamp"
+                android:src="@drawable/stamp" />
+<!--                android:src="@drawable/ic_placeholder_photos" />-->
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="match_parent"
@@ -28,12 +24,11 @@
                 android:layout_marginEnd="0dp"
                 android:layout_marginBottom="-2dp"
                 android:gravity="center_horizontal"
-                android:text="TextView"
+                android:text="@string/app_name"
                 android:textColor="@color/colorWhite"
-                android:textSize="48px"
+                android:textSize="48dp"
                 android:textStyle="bold"
                 android:typeface="monospace" />
 
-        </RelativeLayout>
 
 </LinearLayout>

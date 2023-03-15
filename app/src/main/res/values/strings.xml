@@ -1,21 +1,23 @@
 <resources>
     <string name="app_name">TOEFL Wallpaper</string>
-    <string name="flip_name">Pull down to refresh word</string>
+    <string name="flip_name"></string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="photo_tag" translatable="false">%d / %d</string>
     <string name="explore">Index and Search</string>
     <string name="applyBtn">APPLY</string>
-    <string name="bannerUnitId" translatable="false">ca-app-pub-3940256099942544/6300978111</string>
     <string name="INDEX">Index</string>
     <string name="rate_app_title">Rate this APP</string>
     <string name="rate_app_message" translatable="false">Your review is private and includes your Google profile name and photo</string>
     <string name="pixabaykey" translatable="false">24171517-9dc3eeaa06e0b237fba3d0dcb</string>
     <string name="gotoIndex">Go to Index</string>
-   <!-- <string name="AD_UNIT_ID">ca-app-pub-3940256099942544~3347511713</string>-->
-    <!--测试用ID:ca-app-pub-3940256099942544/5354046379-->
+    <string name="AD_UNIT_ID" translatable="false">ca-app-pub-7921041501220320/4477616654</string>
+<!--    测试用ID:ca-app-pub-3940256099942544/5354046379-->
+    <!--    Aurora rewardedinterAd ID:ca-app-pub-7921041501220320/4477616654-->
+    <string name="AD_BANNER_ID" translatable="false">ca-app-pub-7921041501220320/3214374557</string>
+    <!--    Aurora banner ID:ca-app-pub-7921041501220320/4477616654-->
     <string name="search_words">Search English</string>
-    <string name="please_wait">Please waite...</string>
+    <string name="please_wait">Please wait...</string>
     <string name="appbar_scrolling_view_behavior" translatable="false">com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior</string>
     <string name="swiptorefresh">Swip To Refresh</string>
     <string name="PullToRefresh">Please Pull To Refresh</string>

@@ -79,11 +79,11 @@ class ExploreAdapter(
   override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) =
         if (holder is MyViewholder) {
             val myHolder = holder
-            myHolder.tvNumber.setText(" $position")
+            myHolder.tvNumber.text = " $position"
             //var lent1: Int = itemAllString[position].length
             if (exploreBeanList.size > position) {
                 myHolder.tvExploreName.text =
-                    Html.fromHtml(exploreBeanList.get(position)?.getTitle())
+                    Html.fromHtml(exploreBeanList.get(position)?.title)
             }
             //myHolder.tvExploreName.text =itemAllString[position]
             myHolder.linlayout.setOnClickListener {
@@ -91,13 +91,13 @@ class ExploreAdapter(
                 notifyDataSetChanged()
             }
             if (row_index == position) {
-               /*  myHolder.linlayout.setBackgroundColor(Color.BLUE)
-                myHolder.tvExploreName.setTextColor(Color.parseColor("#ffffff"))*/
+//                myHolder.linlayout.setBackgroundColor(Color.BLUE)
+//                myHolder.tvExploreName.setTextColor(Color.parseColor("#ffffff"))
 
             } else {
                 title = itemAllString[position]
                 //title = exploreBeanList.get(position)?.getTitle().toString()
-                myHolder.linlayout.setBackgroundColor(Color.parseColor("#ffffff"))
+                myHolder.linlayout.setBackgroundColor(Color.parseColor("#E9E3DB"))
                 myHolder.tvExploreName.setTextColor(Color.parseColor("#000000"))
             }
            // if (1 == itemAllString[position].length && ('Z' >= itemAllString[position][0] && itemAllString[position][0] >= 'A')) {
@@ -106,20 +106,20 @@ class ExploreAdapter(
                     "POSITION",
                     "itemA:" + itemAllString[position] + " len: " + itemAllString[position].length
                 )
-               myHolder.cdView!!.setCardBackgroundColor(Color.parseColor("#c0c0c0"))
+                myHolder.cdView!!.setCardBackgroundColor(Color.parseColor("#E9E3DB"))
                 // myHolder.cdView!!.setCardBackgroundColor(Color.parseColor("#ABE0CD"))
                 myHolder.playWord.visibility = View.GONE
                 myHolder.wordMeaning.visibility = View.GONE
-                myHolder.tvNumber.setVisibility(View.GONE)
+                myHolder.tvNumber.visibility = View.GONE
             } else {
                 if (itemAllString[position].length > 1) {
                     myHolder.cdView!!.setCardBackgroundColor(Color.parseColor("#ffffff"))
                     myHolder.playWord.visibility = View.VISIBLE
                     myHolder.wordMeaning.visibility = View.VISIBLE
-                    myHolder.tvNumber.setVisibility(View.VISIBLE)
+                    myHolder.tvNumber.visibility = View.VISIBLE
                 }
                 holder.itemView.setOnClickListener { // onExploreSelectedListner.setOnExploreSelatedListner(position, exploreBeanList.get(position));
-                    title = exploreBeanList.get(position)?.getTitle().toString()
+                    title = exploreBeanList.get(position)?.title.toString()
                     aPosition = titleList.indexOf(title)
                     Bundle().apply {
                         putString("CURRENT_KEY", title)
@@ -135,16 +135,16 @@ class ExploreAdapter(
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                     tts?.speak(
                         //itemAllString.get(position),
-                        exploreBeanList.get(position)?.getTitle(),
+                        exploreBeanList.get(position)?.title,
                         TextToSpeech.QUEUE_FLUSH,
                         null,
-                        exploreBeanList.get(position)?.getTitle()
+                        exploreBeanList.get(position)?.title
                         //itemAllString[position]
                         //itemAllString.get(position)
                     )
                 } else {
                     tts?.speak(
-                        exploreBeanList.get(position)?.getTitle(),
+                        exploreBeanList.get(position)?.title,
                         //itemAllString[position],
                         //itemAllString.get(position),
                         TextToSpeech.QUEUE_FLUSH,
@@ -164,13 +164,13 @@ class ExploreAdapter(
     }
     fun getLetterPosition(letter: String): Int {
         for (i in 0..exploreBeanList.size-1){
-            if(exploreBeanList.get(i)?.getTitle().toString().equals(letter) == true){
+            if(exploreBeanList.get(i)?.title.toString().equals(letter) == true){
                 var j=exploreBeanList.size-1-i
                 //Log.d(TAG," letter: " + letter+" s position is: " + (i).toString())
-                return i;
+                return i
             }
         }
-        return -1;
+        return -1
     }
     inner class MyViewholder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var linlayout: LinearLayout
@@ -210,9 +210,9 @@ class ExploreAdapter(
         val layoutManager: RecyclerView.LayoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, true)
         val linearLayoutManager = mRecyclerView.layoutManager as LinearLayoutManager?
         if (linearLayoutManager != null) {
-            linearLayoutManager.setReverseLayout(false)
-            linearLayoutManager.setStackFromEnd(false);
-        };
+            linearLayoutManager.reverseLayout = false
+            linearLayoutManager.stackFromEnd = false
+        }
 
         /* val linearLayoutManager: RecyclerView.LayoutManager =
              LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)*/

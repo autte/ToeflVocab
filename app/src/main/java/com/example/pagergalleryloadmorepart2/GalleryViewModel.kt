@@ -1,19 +1,18 @@
 package com.example.pagergalleryloadmorepart2
 
 import android.app.Application
-import android.content.Context
 import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresApi
-import java.time.LocalDateTime
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
-import com.google.gson.Gson
+import java.time.LocalDateTime
 import java.util.*
+import com.google.gson.Gson
 
 const val DATA_STATUS_CAN_LOAD_MORE = 0
 const val DATA_STATUS_NO_MORE = 1
@@ -27,10 +26,10 @@ class GalleryViewModel(application: Application, mParam: String, accessTime: Int
     val photoListLive: LiveData<List<PhotoItem>>
         get() = _photoListLive
     var needToScrollToTop = true
-    private val perPage = 6
+    private val perPage = 3
 
     var TAG="GalleryViewModel"
-    private lateinit var context: Context
+    //private lateinit var context: Context
     val pixabaykey=getApplication<Application>().resources.getString(R.string.pixabaykey)
     val keyWords = getApplication<Application>().resources.getStringArray(R.array.itemAllEng)
     val actualkeyWords = getApplication<Application>().resources.getStringArray(R.array.itemActualEng)
@@ -42,7 +41,7 @@ class GalleryViewModel(application: Application, mParam: String, accessTime: Int
     @RequiresApi(Build.VERSION_CODES.O)
     val currentDateTime = LocalDateTime.now()
     @RequiresApi(Build.VERSION_CODES.O)
-    val seconds = currentDateTime.getSecond();
+    val seconds = currentDateTime.second
     var currentKey =keyWords.get(seconds*15)
     private var  AccessTime:Int =seconds*15
     private var isNewQuery = true
@@ -122,7 +121,7 @@ class GalleryViewModel(application: Application, mParam: String, accessTime: Int
             Response.Listener {
                 with(Gson().fromJson(it, Pixabay::class.java)) {
                     //totalPage = ceil(totalHits.toDouble() / perPage).toInt()
-                    totalReturn=totalHits.toInt();
+                    totalReturn=totalHits.toInt()
                     totalPage=1
                     if (isNewQuery) {
                         _photoListLive.value = hits.toList()
@@ -178,7 +177,7 @@ class GalleryViewModel(application: Application, mParam: String, accessTime: Int
         if(kk.equals("Fruitless")){tt="fail"}
         if(kk.equals("Functionalism")){tt="Function"}
         if(kk.equals("Functionalism")){tt="Function"}
-        var sss = "https://pixabay.com/api/?key=${pixabaykey}&q=${tt}&per_page=${perPage}&page=${kk}"
+        var sss = "https://pixabay.com/api/?key=${pixabaykey}&q=${tt}&per_page=${perPage}&page=${kk}&safesearch=true"
         Log.d("getURL Inner2nd", "===sss====" + sss)
 
         return sss

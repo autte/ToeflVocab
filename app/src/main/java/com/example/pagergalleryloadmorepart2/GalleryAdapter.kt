@@ -6,8 +6,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.NavDirections
-import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -31,6 +29,8 @@ class GalleryAdapter(val galleryViewModel: GalleryViewModel)
     var footerViewStatus = DATA_STATUS_CAN_LOAD_MORE
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val holder: MyViewHolder
+
+
         if (viewType == NORMAL_VIEW_TYPE) {
             holder = MyViewHolder(
                 LayoutInflater.from(parent.context).inflate(
@@ -68,7 +68,6 @@ class GalleryAdapter(val galleryViewModel: GalleryViewModel)
                         itemView.textView.text = "Loading..."
                         galleryViewModel.fetchData()
                         //Log.d("FFF", "FFF: From Gallary fetch data")
-
                     }
                 }
             )
@@ -86,14 +85,13 @@ class GalleryAdapter(val galleryViewModel: GalleryViewModel)
             with(holder.itemView) {
                 when(footerViewStatus) {
                     DATA_STATUS_CAN_LOAD_MORE -> {
-                        progressBar.visibility = View.VISIBLE
-                        textView.text = "Loading..."
-                        isClickable = false
+                       progressBar.visibility = View.VISIBLE
+//                        textView.text = "Loading..."
+                       isClickable = false
                     }
                     DATA_STATUS_NO_MORE -> {
                         progressBar.visibility = View.GONE
                         //textView.text = "Please pull to refresh."
-
                         textView.text=this.resources.getString(R.string.PullToRefresh)
                         isClickable = false
                     }
@@ -117,14 +115,20 @@ class GalleryAdapter(val galleryViewModel: GalleryViewModel)
             textViewUser.text = galleryViewModel.getCurrentKey()
             //Log.d("currentKey","GAdpt .txt"+galleryViewModel.getCurrentKey())
             val typeface = Typeface.createFromAsset(
-                context?.getAssets(),
+                context?.assets,
                 "fonts/AslinaBold-2.otf"
             ) // create a typeface from the raw ttf
-            textViewUser.setTypeface(typeface) // apply the typeface to the textview
+            textViewUser.typeface = typeface // apply the typeface to the textview
 
           /*  textViewLikes.text = photoItem.photoLikes.toString()
             textViewFavorites.text = photoItem.photoFavorites.toString()*/
+            //imageView.layoutParams.height = photoItem.photoHeight
             imageView.layoutParams.height = photoItem.photoHeight
+            when(position){
+                 0->photoCardView.rotation = 5f
+                 1->photoCardView.rotation = -12f
+                 else ->photoCardView.rotation =10f
+             }
         }
         holder.itemView.shimmerLayoutCell.apply {
             setShimmerColor(0x55FFFFFF)

@@ -3,13 +3,14 @@
     package="com.example.pagergalleryloadmorepart2">
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.SET_WALLPAPER" />
+    <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
         android:allowBackup="true"
         android:usesCleartextTraffic="true"
+        android:fullBackupContent="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:networkSecurityConfig="@xml/network_security_config"
@@ -22,8 +23,8 @@
         <!-- Sample AdMob app ID: ca-app-pub-3940256099942544~3347511713 -->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-5268108478853992~5976634922" />
-        <!-- android:value="ca-app-pub-5268108478853992~5976634922"/> -->
+            android:value="ca-app-pub-7921041501220320~6821527202" />
+
         <activity android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

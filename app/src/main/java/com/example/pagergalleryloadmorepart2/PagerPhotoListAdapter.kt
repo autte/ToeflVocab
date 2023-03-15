@@ -65,7 +65,7 @@ class PagerPhotoListAdapter:ListAdapter<PhotoItem,PagerPhotoViewHolder>(DiffCall
         }*/
     }
     private fun getStringResourceByName(aString: String): String {
-        val packageName: String = mContext?.packageName ?: "Null"
+        val packageName: String = mContext.packageName ?: "Null"
         val resId = mContext.resources.getIdentifier(aString, "string", packageName)
         return mContext.getString(resId)
         Log.d("str111","str strToast : "+mContext.getString(resId))

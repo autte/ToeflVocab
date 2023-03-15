@@ -74,7 +74,7 @@ class WaveSideBarView @JvmOverloads constructor(
     private fun init(context: Context, attrs: AttributeSet?) {
         mLetters = Arrays.asList(*context.resources.getStringArray(R.array.waveSideBarLetters))
         mTextColor = Color.parseColor("#969696")
-        mWaveColor = Color.parseColor("#be69be91")
+        mWaveColor = Color.parseColor("#d9bba6")
         mTextColorChoose = context.resources.getColor(android.R.color.white)
         mTextSize = context.resources.getDimensionPixelSize(R.dimen.textSize_sidebar).toFloat()
         mLargeTextSize =

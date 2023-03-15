@@ -15,6 +15,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.NavDirections
@@ -42,11 +43,13 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
      /*   setContentView(R.layout.fragment_explore)
         loadFragment(ExploreFragment())*/
         setContentView(R.layout.activity_main)
-        MobileAds.initialize(this) {
-            val adView = AdView(this)
-            adView.adSize = AdSize.BANNER
-            adView.adUnitId = this?.resources?.getString(R.string.bannerUnitId) ?: "ca-app-pub-3940256099942544/6300978111"
+        mAdView = AdView(this)
+        mAdView.adSize = AdSize.BANNER
+        mAdView.adUnitId = this?.resources?.getString(R.string.AD_BANNER_ID) ?: "ca-app-pub-7921041501220320/3214374557"
 // TODO: Add adView to your view hierarchy.
+
+        MobileAds.initialize(this) {
+            //val adView = AdView(this)
         }
         val adRequest = AdRequest.Builder().build()
         mAdView.loadAd(adRequest)
@@ -54,7 +57,10 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         // Define ActionBar object
         val actionBar: ActionBar?
         actionBar = supportActionBar
-        val colorDrawable = ColorDrawable(Color.parseColor("#0F9D58"))
+
+        val colorResId = R.color.colorEditHintText // ID of the color resource in colors.xml
+        val colorPink = ContextCompat.getColor(this, colorResId)
+        val colorDrawable = ColorDrawable(colorPink)
         // Set BackgroundDrawable
         actionBar!!.setBackgroundDrawable(colorDrawable)
 

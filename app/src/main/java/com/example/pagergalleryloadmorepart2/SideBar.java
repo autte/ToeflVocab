@@ -9,9 +9,9 @@ import android.view.View;
 
 public class SideBar extends View {
     public static String[] characters = new String[]{"❤", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
-    private int position = -1;		//当前选中的位置
-    private int defaultTextColor = Color.parseColor("#D2D2D2");   //默认拼音文字的颜色
-    private int selectedTextColor = Color.parseColor("#2DB7E1");  //选中后的拼音文字的颜色
+    private final int position = -1;		//当前选中的位置
+    private final int defaultTextColor = Color.parseColor("#D2D2D2");   //默认拼音文字的颜色
+    private final int selectedTextColor = Color.parseColor("#2DB7E1");  //选中后的拼音文字的颜色
 
     @Override
     protected void onDraw(Canvas canvas) {
